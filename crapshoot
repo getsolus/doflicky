@@ -12,7 +12,6 @@
 
 from doflicky import OSContext
 from doflicky.driver.nvidia import DriverBundleNvidia
-from doflicky.driver.nvidia import DriverBundleNvidia304
 from doflicky.driver.nvidia import DriverBundleNvidia340
 from doflicky.driver.broadcom import DriverBundleBroadcom
 import pisi
@@ -32,7 +31,6 @@ class BundleSet:
         self.drivers = [
             DriverBundleNvidia340(),
             DriverBundleNvidia(),
-            DriverBundleNvidia304(),
             DriverBundleBroadcom(),
         ]
         self.allDrivers = list()
