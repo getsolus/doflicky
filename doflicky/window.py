@@ -38,13 +38,8 @@ class DoFlickyWindow(Gtk.ApplicationWindow):
         Gtk.ApplicationWindow.__init__(self)
 
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
-        hbar = Gtk.HeaderBar()
-        hbar.set_show_close_button(True)
-        self.set_titlebar(hbar)
 
-        self.set_title("DoFlicky")
-        hbar.set_title("DoFlicky")
-        hbar.set_subtitle("Solus Driver Management")
+        self.set_title("Solus Driver Management")
         self.set_size_request(400, 400)
 
         self.stack = Gtk.Stack()
