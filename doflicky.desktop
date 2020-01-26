@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Hardware Drivers
-GenericName=Hardware Drivers
+Name=Solus Driver Management
+GenericName=Driver Management Utility
 Comment=Install or remove hardware drivers
 Exec=/usr/bin/doflicky-ui
 Terminal=false
