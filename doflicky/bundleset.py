@@ -13,6 +13,7 @@
 from doflicky import OSContext
 from doflicky.driver.nvidia import DriverBundleNvidia
 from doflicky.driver.nvidia import DriverBundleNvidia390
+from doflicky.driver.nvidia import DriverBundleNvidia470
 from doflicky.driver.broadcom import DriverBundleBroadcom
 from pisi.db.installdb import InstallDB
 
@@ -30,6 +31,7 @@ class BundleSet:
         """ Initialise the potential driver bundle set """
         self.drivers = [
             DriverBundleNvidia390(),
+            DriverBundleNvidia470(),
             DriverBundleNvidia(),
             DriverBundleBroadcom(),
         ]
