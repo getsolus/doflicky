@@ -78,26 +78,3 @@ class DriverBundleNvidia470(DriverBundleNvidiaBase):
         else:
             basePackages.append("nvidia-470-glx-driver")
         return basePackages
-
-class DriverBundleNvidia390(DriverBundleNvidiaBase):
-    """ NVIDIA driver 390 (nvidia-390-glx-driver) """
-
-    def __init__(self):
-        DriverBundleNvidiaBase.__init__(self,
-                                        "nvidia-390-glx-driver.modaliases")
-
-    def get_name(self):
-        return "NVIDIA Graphics Driver (390.xx series)"
-
-    def get_priority(self):
-        return 1
-
-    def get_packages(self, context, emul32=False):
-        basePackages = ["nvidia-390-glx-driver-common"]
-        if emul32:
-            basePackages.append("nvidia-390-glx-driver-32bit")
-        if context.get_active_kernel_series() == "current":
-            basePackages.append("nvidia-390-glx-driver-current")
-        else:
-            basePackages.append("nvidia-390-glx-driver")
-        return basePackages
