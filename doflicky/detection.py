@@ -66,8 +66,7 @@ class DriverBundlePCI(DriverBundle):
         return False
 
 
-nvidia_driver_priority = ['nvidia-glx-driver',
-                          'nvidia-470-glx-driver']
+nvidia_driver_priority = ['nvidia-glx-driver']
 
 
 def detect_hardware_packages():
