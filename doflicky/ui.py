@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 #  ui.py
@@ -13,7 +13,7 @@
 from gi.repository import Gtk, GObject
 from doflicky.widgets import PackageLabel
 
-import comar
+import scom
 import pisi.db
 from pisi.operations.install import plan_install_pkg_names
 from pisi.operations.remove import plan_remove
@@ -58,8 +58,8 @@ class CompletionPage(Gtk.VBox):
                                    '/org/freedesktop/login1')
             iface = dbus.Interface(rskel, 'org.freedesktop.login1.Manager')
             iface.Reboot(True)
-        except Exception, ex:
-            print("Exception rebooting: %s" % ex)
+        except Exception as ex:
+            print(("Exception rebooting: %s" % ex))
 
 
 class OpPage(Gtk.VBox):
@@ -96,7 +96,7 @@ class OpPage(Gtk.VBox):
         self.update_ui()
 
         self.cb = None
-        self.link = comar.Link()
+        self.link = scom.Link()
         self.pmanager = self.link.System.Manager['pisi']
         self.link.listenSignals("System.Manager", self.pisi_callback)
 
@@ -138,7 +138,7 @@ class OpPage(Gtk.VBox):
         self.update_ui()
 
     def remove_package(self, old_package):
-        print("-REMOVE " + old_package)
+        print(("-REMOVE " + old_package))
         self.operations[old_package] = 'UNINSTALL'
         self.update_ui()
 
@@ -148,7 +148,7 @@ class OpPage(Gtk.VBox):
                 self.remove_package(pkg)
 
     def install_package(self, new_package):
-        print("+INSTALL " + new_package)
+        print(("+INSTALL " + new_package))
         self.operations[new_package] = 'INSTALL'
         self.update_ui()
 
@@ -246,7 +246,7 @@ class OpPage(Gtk.VBox):
             self.set_progress(None, None)
             self.update_ui()
             return
-        elif str(signal).startswith("tr.org.pardus.comar.Comar.PolicyKit"):
+        elif str(signal).startswith("tr.org.sulin.scom.Scom.PolicyKit"):
             if self.cb is not None:
                 self.cb()
             self.cb = None
@@ -402,15 +402,16 @@ class OpPage(Gtk.VBox):
             self.current_operations = packageset
 
             self.cb = self.invalidate_all
+            kwargs = {"async": self.pisi_callback}
             if packageset == updates:
                 self.pmanager.updatePackage(
-                    ",".join(packageset), async=self.pisi_callback)
+                    ",".join(packageset), **kwargs)
             elif packageset == installs:
                 self.pmanager.installPackage(
-                    ",".join(packageset), async=self.pisi_callback)
+                    ",".join(packageset), **kwargs)
             elif packageset == removals:
                 self.pmanager.removePackage(
-                    ",".join(packageset), async=self.pisi_callback)
+                    ",".join(packageset), **kwargs)
         if not setAct:
             self.invalidate_all()
             self.update_ui()

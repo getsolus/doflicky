@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 #
 #  bundleset - core detection routine
 #
@@ -57,8 +57,8 @@ class BundleSet:
 
             for existing in otherDrivers:
                 if existing.get_priority() > driver.get_priority():
-                    print("DEBUG: {} shadowed by existing {}".format(
-                        driver.get_name(), existing.get_name()))
+                    print(("DEBUG: {} shadowed by existing {}".format(
+                        driver.get_name(), existing.get_name())))
                     return
                 elif driver.get_priority() > existing.get_priority():
                     self.uniqueDrivers.remove(existing)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 #
 #  crapshoot - testing driver management
 #
@@ -57,8 +57,8 @@ class BundleSet:
 
             for existing in otherDrivers:
                 if existing.get_priority() > driver:
-                    print("DEBUG: {} shadowed by existing {}".format(
-                        driver.get_name(), existing.get_name()))
+                    print(("DEBUG: {} shadowed by existing {}".format(
+                        driver.get_name(), existing.get_name())))
                     return
                 elif driver.get_priority() > existing.get_priority():
                     self.uniqueDrivers.remove(existing)
@@ -75,9 +75,9 @@ if __name__ == "__main__":
     bs.detect()
 
     for driver in bs.uniqueDrivers:
-        print("Found supported hardware: %s" % driver.get_name())
+        print(("Found supported hardware: %s" % driver.get_name()))
         emul32 = False
         if driver in bs.emul32Triggers:
             emul32 = True
         pkgs = driver.get_packages(bs.context, emul32)
-        print("Packages: %s" % ", ".join(pkgs))
+        print(("Packages: %s" % ", ".join(pkgs)))

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 #  detection.py
@@ -71,7 +71,7 @@ nvidia_driver_priority = ['nvidia-glx-driver']
 
 def detect_hardware_packages():
     if not os.path.exists(MODDIR):
-        print("Moddir not found: %s" % MODDIR)
+        print(("Moddir not found: %s" % MODDIR))
         sys.exit(1)
 
     pkgs = dict()
@@ -262,4 +262,4 @@ def get_hardware():
     return result
 
 
-(MODE_FREE, MODE_NONFREE, MODE_ANY) = range(3)
+(MODE_FREE, MODE_NONFREE, MODE_ANY) = list(range(3))
