@@ -1,3 +1,6 @@
+# Archived
+> [!Warning]
+> As of October 2025, `doflicky` is being deprecated in favor of this functionality being rolled into packagekit-based software centers such as Discover and GNOME Software. Read [the project's blog archive](https://getsol.us/blog/) for further context.
 DoFlicky
 --------
 
